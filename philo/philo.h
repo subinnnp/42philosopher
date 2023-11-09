@@ -27,7 +27,8 @@ typedef struct s_philo
 {
 	int					index;
 	int					state;
-	int					life;
+	int					dead;
+	int					num_of_meal;
 	int					last_moment_eat;
 	pthread_t			thread;
 	pthread_mutex_t		*r_chopstick;
@@ -37,24 +38,30 @@ typedef struct s_philo
 
 typedef struct s_args
 {
-	size_t		num_of_philo;
-	size_t		time_to_die;
-	size_t		time_to_eat;
-	size_t		time_to_sleep;
-	int			eating_goal;
+	size_t			num_of_philo;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	size_t			start_time;
+	int				eating_goal;
+	pthread_mutex_t	meal;
 }				t_args;
 
 int		ft_atoi(const char *nptr);
 int		put_arguments(t_args *arg, char **input);
-int 	philosopher(int *arg);
 int		generate_threads(t_philo **philo, t_args args);
 int		generate_chopstick(pthread_mutex_t **chopstick,
 							t_philo **philo, t_args arg);
-int		generate_philo(t_philo **philo, t_args args);
-void    free_philo(t_philo **philo, t_args args);
-void    free_philo_with_c(t_philo **philo, t_args args);
+int		dead_checker(t_philo *first_philo);
+int		eating_checker(t_philo *first_philo);
+int		generate_threads(t_philo **philo, t_args args);
+void	philosopher(t_philo *philo);
+void	free_philo(t_philo **philo, t_args args);
+void	free_philo_with_c(t_philo **philo, t_args args);
 void	detach_threads(pthread_t *threads, int how_many);
 size_t	get_current_time();
-int		ft_usleep(size_t milliseconds);
+int		ft_usleep(size_t milliseconds, t_args args);
+int		ft_strlen(char *str);
+char	*ft_itoa(int n);
 
 #endif

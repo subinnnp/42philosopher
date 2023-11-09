@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: siun <siun@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:57:10 by siun              #+#    #+#             */
-/*   Updated: 2023/11/08 14:42:51 by siun             ###   ########.fr       */
+/*   Updated: 2023/11/09 17:18:07 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(!str[i])
+		i ++;
+	return (i);
+}
 
 void	detach_threads(pthread_t *threads, int how_many)
 {
@@ -26,6 +36,8 @@ void	detach_threads(pthread_t *threads, int how_many)
 
 int		put_arguments(t_args *args, char **input)
 {
+	int	tmp;
+
 	if (!input[1] || !input[2] || !input[3] || !input[4])
 	{
 		args->num_of_philo = ft_atoi(input[1]);
@@ -39,6 +51,9 @@ int		put_arguments(t_args *args, char **input)
 		args->eating_goal = ft_atoi(input[5]);
 	else
 		args->eating_goal = -1;
+	args->start_time = get_current_time();
+	if (pthread_mutex_init(&(args->meal), NULL))
+		return (0);
 	return (1);
 }
 
@@ -51,12 +66,13 @@ size_t	get_current_time()
 	return (current_time.tv_sec * 1000 + current_time.tv_usec / 1000);
 }
 
-int	ft_usleep(size_t milliseconds)
+int	ft_usleep(size_t milliseconds, t_args args)
 {
 	size_t start;
 
 	start = get_current_time();
-	while ((get_current_time() - start) < milliseconds)
+	while ((get_current_time() - start) < milliseconds
+			&& (get_current_time() - start < args.time_to_die))
 		usleep(100);
 	return (0);
 }

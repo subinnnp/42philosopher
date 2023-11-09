@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: siun <siun@student.42.fr>                  +#+  +:+       +#+         #
+#    By: subpark <subpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 22:46:12 by siun              #+#    #+#              #
-#    Updated: 2023/11/08 14:42:49 by siun             ###   ########.fr        #
+#    Updated: 2023/11/09 17:49:35 by subpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC 		= cc
 CCFLAGS = -Wall -Werror -Wextra
 
 NAME 	= philo
-SRC		=
+SRC		= action.c free.c ft_atoi.c ft_itoa.c generate.c main.c tools.c
 OBJ		= $(SRC:.c=.o)
 
 all: $(NAME)
