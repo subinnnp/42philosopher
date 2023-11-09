@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:34:14 by siun              #+#    #+#             */
-/*   Updated: 2023/11/09 16:49:06 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/09 18:06:47 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ int	generate_threads(t_philo **philo, t_args args)
 	while(i < args.num_of_philo)
 	{
 		buf = pthread_create(&(philo[i]->thread), 0, philosopher, philo[i]);
-		philo[i]->arg
+		philo[i]->args;
 		if (buf != 0)
 		{
-			detach_threads(philo[i]->thread, i);
+			detach_threads(&(philo[i]->thread), i);
 			free_philo(philo, args);
 			return (0);
 		}

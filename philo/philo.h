@@ -23,6 +23,17 @@
 # include <semaphore.h>
 # include <errno.h>
 
+typedef struct s_args
+{
+	size_t			num_of_philo;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	size_t			start_time;
+	int				eating_goal;
+	pthread_mutex_t	meal;
+}				t_args;
+
 typedef struct s_philo
 {
 	int					index;
@@ -35,17 +46,6 @@ typedef struct s_philo
 	pthread_mutex_t		*l_chopstick;
 	t_args				*args;
 }				t_philo;
-
-typedef struct s_args
-{
-	size_t			num_of_philo;
-	size_t			time_to_die;
-	size_t			time_to_eat;
-	size_t			time_to_sleep;
-	size_t			start_time;
-	int				eating_goal;
-	pthread_mutex_t	meal;
-}				t_args;
 
 int		ft_atoi(const char *nptr);
 int		put_arguments(t_args *arg, char **input);
