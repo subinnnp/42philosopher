@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:34:14 by siun              #+#    #+#             */
-/*   Updated: 2023/11/09 18:06:47 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/10 14:40:55 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@ int	generate_philo(t_philo **philo, t_args args)
 {
 	int	i;
 
-	(*philo) = (t_philo *)malloc(siseof(philo) * (args.num_of_philo));
+	(*philo) = (t_philo *)malloc(sizeof(t_philo) * (args.num_of_philo));
 	if (!(*philo))
 		return (0);
 	i = 0;
 	while (i < args.num_of_philo)
 	{
-		memset(philo[i], 0, sizeof(t_philo));
+		memset(&((philo[i])), 0, sizeof(t_philo));
+		printf("memset\n");
+		((*philo)[i].args) = &args;
+		printf("args\n");
 		i ++;
 	}
 	return (1);
@@ -32,8 +35,8 @@ int generate_chopstick(pthread_mutex_t **chopstick, t_philo **philo, t_args args
 {
 	int	i;
 
-	chopstick = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
-				* args.num_of_philo);
+	*chopstick = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
+				* args.num_of_philo);//confused
 	if (!chopstick)
 	{
 		free_philo(philo, args);
@@ -62,7 +65,7 @@ int	generate_threads(t_philo **philo, t_args args)
 	while(i < args.num_of_philo)
 	{
 		buf = pthread_create(&(philo[i]->thread), 0, philosopher, philo[i]);
-		philo[i]->args;
+		//philo[i]->args;
 		if (buf != 0)
 		{
 			detach_threads(&(philo[i]->thread), i);

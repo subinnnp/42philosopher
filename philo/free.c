@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:22:32 by siun              #+#    #+#             */
-/*   Updated: 2023/11/09 14:48:10 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/10 13:26:18 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	joining_threads(t_philo **philo, t_args args)
 {
 	int     i;
 	int     res;
-	void    *thread_result
+	void    *thread_result;
 
 	i = 0;
 	while (i < args.num_of_philo)
@@ -51,7 +51,7 @@ void	joining_threads(t_philo **philo, t_args args)
 		{
 			while (i < args.num_of_philo)
 			{
-				pthread_detach(philo[i]);
+				pthread_detach(philo[i]->thread);
 				i ++;
 			}
 			free_philo_with_c(philo, args);
@@ -60,4 +60,16 @@ void	joining_threads(t_philo **philo, t_args args)
 		i ++;
 	}
 	free_philo_with_c(philo, args);
+}
+
+void	detach_threads(pthread_t *threads, int how_many)
+{
+	int	i;
+
+	i = 0;
+	while (i < how_many)
+	{
+		pthread_detach(threads[i]);
+		i ++;
+	}
 }

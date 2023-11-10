@@ -52,16 +52,22 @@ int		put_arguments(t_args *arg, char **input);
 int		generate_threads(t_philo **philo, t_args args);
 int		generate_chopstick(pthread_mutex_t **chopstick,
 							t_philo **philo, t_args arg);
+int		generate_philo(t_philo **philo, t_args args);
 int		dead_checker(t_philo *first_philo);
 int		eating_checker(t_philo *first_philo);
 int		generate_threads(t_philo **philo, t_args args);
-void	philosopher(t_philo *philo);
+void	*philosopher(void *philo);
 void	free_philo(t_philo **philo, t_args args);
 void	free_philo_with_c(t_philo **philo, t_args args);
+void	joining_threads(t_philo **philo, t_args args);
 void	detach_threads(pthread_t *threads, int how_many);
 size_t	get_current_time();
 int		ft_usleep(size_t milliseconds, t_args args);
 int		ft_strlen(char *str);
 char	*ft_itoa(int n);
+void	action_print(t_philo *philo, char *str);
+void	philo_eats(t_philo *philo);
+void	philo_sleep(t_philo *philo);
+void	philo_think(t_philo *philo);
 
 #endif
