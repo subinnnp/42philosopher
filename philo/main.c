@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:55:24 by siun              #+#    #+#             */
-/*   Updated: 2023/11/11 14:51:09 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/11 17:00:17 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	*philosopher(void *philo)
 	printf("thread %d generated\n", ((t_philo *)philo)->index);
 	if (((t_philo *)philo)->index % 2)
 		ft_usleep(1, *((t_philo *)philo)->args);
-	printf("hey\n");
+	//printf("hey\n");
 	while (!((t_philo *)philo)->dead)
 	{
-		printf("here\n");
+	//	printf("here\n");
 		if (get_current_time() - ((t_philo *)philo)->last_moment_eat >= ((t_philo *)philo)->args->time_to_die)
 			((t_philo *)philo)->dead = 1;
 		philo_eats(((t_philo *)philo));

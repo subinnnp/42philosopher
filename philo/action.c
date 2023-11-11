@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:07:46 by subpark           #+#    #+#             */
-/*   Updated: 2023/11/11 15:42:54 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/11 17:03:47 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@ void	action_print(t_philo *philo, char *str)
 	char	*timestamp;
 	char	*num;
 
-	printf("action working\n");
+	//printf("action working\n");
 	//printf("%s", str);
 	timestamp = ft_itoa(get_current_time() - philo->args->start_time);
+	//printf("%s, leng: %d\n", timestamp, ft_strlen(timestamp));
 	if (!timestamp)
 		return ;
 	write(1, timestamp, ft_strlen(timestamp));
 	free(timestamp);
-	write(1, " ", 1);
+	write(1, ": ", 2);
 	num = ft_itoa(philo->index);
 	if (!num)
 		return ;
