@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:07:46 by subpark           #+#    #+#             */
-/*   Updated: 2023/11/10 12:10:24 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/11 15:42:54 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	action_print(t_philo *philo, char *str)
 	char	*timestamp;
 	char	*num;
 
+	printf("action working\n");
+	//printf("%s", str);
 	timestamp = ft_itoa(get_current_time() - philo->args->start_time);
 	if (!timestamp)
 		return ;
@@ -35,7 +37,10 @@ void	action_print(t_philo *philo, char *str)
 
 void	philo_eats(t_philo *philo)
 {
+	//printf("\n in philo eats l chopstick address: %p\n", philo->l_chopstick);
+	//printf("\n in philo eats r chopstick address: %p\n", philo->r_chopstick);
 	pthread_mutex_lock(philo->l_chopstick);
+//	printf("sth reached tha\n");
 	action_print(philo, "has taken a fork");
 	pthread_mutex_lock(philo->r_chopstick);
 	action_print(philo, "has taken a fork");

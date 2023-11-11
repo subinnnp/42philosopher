@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:57:10 by siun              #+#    #+#             */
-/*   Updated: 2023/11/10 14:11:00 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/11 16:40:37 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ int	ft_usleep(size_t milliseconds, t_args args)
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds
 			&& (get_current_time() - start < args.time_to_die))
-		usleep(100);
+		usleep(1);
 	return (0);
 }
