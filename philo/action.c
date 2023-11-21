@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:07:46 by subpark           #+#    #+#             */
-/*   Updated: 2023/11/21 17:58:49 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/21 18:39:10 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	philo_eats(t_philo *philo)
 	pthread_mutex_lock(&(*philo->r_chopstick));
 	action_print(philo, "has taken a fork");
 	pthread_mutex_lock(&(philo->args->meal));
-		printf("time to eat : %lld\n", philo->args->time_to_eat);
+//		printf("time to eat : %lld\n", philo->args->time_to_eat);
 	action_print(philo, "is eating");
 	philo->last_moment_eat = get_current_time();
 	pthread_mutex_unlock(&(philo->args->meal));

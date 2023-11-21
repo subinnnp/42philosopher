@@ -6,7 +6,7 @@
 #    By: subpark <subpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 22:46:12 by siun              #+#    #+#              #
-#    Updated: 2023/11/21 17:45:49 by subpark          ###   ########.fr        #
+#    Updated: 2023/11/21 18:26:44 by subpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ re: fclean all
 			$(CC) $(CCFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-			$(CC) $(CCFLAGS) -fsanitize=thread -g -o $@ $^
+			$(CC) $(CCFLAGS) -o $@ $^
 
 .PHONY: all clean fclean re
+
+#-fsanitize=thread -g 

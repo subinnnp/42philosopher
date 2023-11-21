@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:34:14 by siun              #+#    #+#             */
-/*   Updated: 2023/11/21 17:36:49 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/21 18:29:38 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	generate_philo(t_philo **philo, t_args *args)
 	return (1);
 }
 
-int generate_chopstick(pthread_mutex_t **chopstick, t_philo **philo, t_args args)
+int generate_chopstick(pthread_mutex_t *chopstick, t_philo **philo, t_args args)
 {
 	int	i;
 
-	*chopstick = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
+	chopstick = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
 				* args.num_of_philo);
 	if (!chopstick)
 	{
@@ -42,15 +42,15 @@ int generate_chopstick(pthread_mutex_t **chopstick, t_philo **philo, t_args args
 	}
 	i = 0;
 	while (i < args.num_of_philo)
-		if (pthread_mutex_init(&(*chopstick)[i ++], NULL))
+		if (pthread_mutex_init(&chopstick[i ++], NULL))
 			return (0);
 	i = 0;
 	while (i < args.num_of_philo)
 	{
-		(*philo)[i].r_chopstick = chopstick[i];
-		(*philo)[i].l_chopstick = chopstick[(i + 1) % args.num_of_philo];
-		printf("pointer of l chopstick address %p\n", (*philo)[i].l_chopstick);
-		printf("pointer of copied r chopstick address %p\n", (*philo)[i].r_chopstick);
+		(*philo)[i].r_chopstick = &chopstick[i];
+		(*philo)[i].l_chopstick = &chopstick[(i + 1) % args.num_of_philo];
+	//	printf("pointer of l chopstick address %p\n", (*philo)[i].l_chopstick);
+	//	printf("pointer of copied r chopstick address %p\n", (*philo)[i].r_chopstick);
 		i ++;
 	}
 	return (1);

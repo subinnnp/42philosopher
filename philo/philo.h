@@ -50,7 +50,7 @@ typedef struct s_philo
 int		ft_atoi(const char *nptr);
 int		put_arguments(t_args *arg, char **input);
 int		generate_threads(t_philo **philo, t_args args);
-int		generate_chopstick(pthread_mutex_t **chopstick,
+int		generate_chopstick(pthread_mutex_t *chopstick,
 							t_philo **philo, t_args arg);
 int		generate_philo(t_philo **philo, t_args *args);
 int		dead_checker(t_philo *first_philo);

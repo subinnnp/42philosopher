@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:57:10 by siun              #+#    #+#             */
-/*   Updated: 2023/11/21 17:17:58 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/21 18:35:35 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ int	ft_usleep(long long milliseconds, t_args args)
 	long long start;
 
 	start = get_current_time();
-	printf("start time : %lld\n", start);
+	//printf("start time : %lld\n", start);
 	while ((get_current_time() - start) < milliseconds
 			&& (get_current_time() - start < args.time_to_die))
 			{
 				//printf("checker working\n");
-		usleep(10);}
+		usleep(7);}
 	return (0);
 }
