@@ -25,11 +25,11 @@
 
 typedef struct s_args
 {
-	size_t			num_of_philo;
-	size_t			time_to_die;
-	size_t			time_to_eat;
-	size_t			time_to_sleep;
-	size_t			start_time;
+	long long		num_of_philo;
+	long long		time_to_die;
+	long long		time_to_eat;
+	long long		time_to_sleep;
+	long long		start_time;
 	int				eating_goal;
 	pthread_mutex_t	meal;
 }				t_args;
@@ -40,7 +40,7 @@ typedef struct s_philo
 	int					state;
 	int					dead;
 	int					num_of_meal;
-	int					last_moment_eat;
+	long long			last_moment_eat;
 	pthread_t			thread;
 	pthread_mutex_t		*r_chopstick;
 	pthread_mutex_t		*l_chopstick;
@@ -61,8 +61,8 @@ void	free_philo(t_philo **philo, t_args args);
 void	free_philo_with_c(t_philo **philo, t_args args);
 void	joining_threads(t_philo **philo, t_args args);
 void	detach_threads(pthread_t *threads, int how_many);
-size_t	get_current_time();
-int		ft_usleep(size_t milliseconds, t_args args);
+long long	get_current_time();
+int			ft_usleep(long long milliseconds, t_args args);
 int		ft_strlen(char *str);
 char	*ft_itoa(int n);
 void	action_print(t_philo *philo, char *str);

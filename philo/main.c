@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:55:24 by siun              #+#    #+#             */
-/*   Updated: 2023/11/11 17:00:17 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/21 17:16:01 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	dead_checker(t_philo *first_philo)
 	t_philo	*curr;
 	int		i;
 
-	ft_usleep(2, *first_philo->args);
+	ft_usleep(5, *first_philo->args);
 	curr = first_philo;
 	i = 0;
 //			printf("hi\n");
@@ -62,8 +62,9 @@ int	eating_checker(t_philo *first_philo)
 void	*philosopher(void *philo)
 {
 	printf("thread %d generated\n", ((t_philo *)philo)->index);
+	usleep(1000);
 	if (((t_philo *)philo)->index % 2)
-		ft_usleep(1, *((t_philo *)philo)->args);
+		usleep(10000);
 	//printf("hey\n");
 	while (!((t_philo *)philo)->dead)
 	{
@@ -85,6 +86,8 @@ int	main(int argc, char **argv)
 	t_philo					*philo;
 	pthread_mutex_t			*chopstick;
 
+	if (argc < 4 || argc > 6)
+		return (0);
 	if (!put_arguments(&args, argv))
 		return (errno);
 	if (!generate_philo(&philo, &args))

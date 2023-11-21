@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:57:10 by siun              #+#    #+#             */
-/*   Updated: 2023/11/11 17:04:41 by subpark          ###   ########.fr       */
+/*   Updated: 2023/11/21 17:17:58 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,25 @@ int		put_arguments(t_args *args, char **input)
 	return (1);
 }
 
-size_t	get_current_time()
+long long	get_current_time()
 {
 	struct timeval	current_time;
 
-	if(!gettimeofday(&current_time, NULL))
+	if(gettimeofday(&current_time, NULL) == -1)
 		return (0);
 	return (current_time.tv_sec * 1000 + current_time.tv_usec / 1000);
 }
 
-int	ft_usleep(size_t milliseconds, t_args args)
+int	ft_usleep(long long milliseconds, t_args args)
 {
-	size_t start;
+	long long start;
 
 	start = get_current_time();
+	printf("start time : %lld\n", start);
 	while ((get_current_time() - start) < milliseconds
 			&& (get_current_time() - start < args.time_to_die))
-		usleep(5);
+			{
+				//printf("checker working\n");
+		usleep(10);}
 	return (0);
 }
