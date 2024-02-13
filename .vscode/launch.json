@@ -5,8 +5,8 @@
             "name": "C/C++ Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/philo",
-            "args": [],
+            "program": "${workspaceFolder}/philo/philo",
+            "args": ["5", "500", "100", "200"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -19,7 +19,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "make"
+           // "preLaunchTask": "make"
         }
     ]
 }

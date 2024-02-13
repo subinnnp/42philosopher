@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:55:24 by siun              #+#    #+#             */
-/*   Updated: 2024/02/13 17:01:14 by subpark          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:31:16 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	main(int argc, char **argv)
 		return (errno);
 	if (!generate_threads(&philo, &args))
 		return (errno);
+	philosopher(philo);
 	if (dead_checker(philo) || eating_checker(philo))
 		joining_threads(&philo, args);
 	return (0);
