@@ -44,6 +44,7 @@ typedef struct s_philo
 	pthread_t			thread;
 	pthread_mutex_t		*r_chopstick;
 	pthread_mutex_t		*l_chopstick;
+	pthread_mutex_t		*print_mu;
 	t_args				*args;
 }				t_philo;
 

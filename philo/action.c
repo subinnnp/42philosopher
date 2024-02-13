@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:07:46 by subpark           #+#    #+#             */
-/*   Updated: 2024/02/12 17:09:49 by subpark          ###   ########.fr       */
+/*   Updated: 2024/02/13 19:39:19 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	action_print(t_philo *philo, char *str)
 	char	*timestamp;
 	char	*num;
 
+	pthread_mutex_lock(&(*philo->print_mu));
 	timestamp = ft_itoa(get_current_time() - philo->args->start_time);
 	if (!timestamp)
 		return ;
@@ -31,6 +32,7 @@ void	action_print(t_philo *philo, char *str)
 	write(1, " ", 1);
 	write(1, str, ft_strlen(str));
 	write(1, "\n", 1);
+	pthread_mutex_unlock(philo->print_mu);
 }
 
 void	philo_eats(t_philo *philo)
