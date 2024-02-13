@@ -6,12 +6,12 @@
 #    By: subpark <subpark@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 22:46:12 by siun              #+#    #+#              #
-#    Updated: 2023/11/21 18:26:44 by subpark          ###   ########.fr        #
+#    Updated: 2024/02/12 17:25:18 by subpark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC 		= cc
-CCFLAGS = -Wall -Werror -Wextra
+CCFLAGS = -Wall -Werror -Wextra -g
 
 NAME 	= philo
 SRC		= action.c free.c ft_atoi.c ft_itoa.c generate.c main.c tools.c

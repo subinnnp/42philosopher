@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:34:14 by siun              #+#    #+#             */
-/*   Updated: 2023/11/21 18:29:38 by subpark          ###   ########.fr       */
+/*   Updated: 2024/02/12 17:09:29 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ int generate_chopstick(pthread_mutex_t *chopstick, t_philo **philo, t_args args)
 	{
 		(*philo)[i].r_chopstick = &chopstick[i];
 		(*philo)[i].l_chopstick = &chopstick[(i + 1) % args.num_of_philo];
-	//	printf("pointer of l chopstick address %p\n", (*philo)[i].l_chopstick);
-	//	printf("pointer of copied r chopstick address %p\n", (*philo)[i].r_chopstick);
 		i ++;
 	}
 	return (1);
@@ -66,7 +64,6 @@ int	generate_threads(t_philo **philo, t_args args)
 	{
 		(*philo)[i].index = i;
 		buf = pthread_create(&(*philo)[i].thread, 0, philosopher, &(*philo)[i]);
-		//philo[i]->args;
 		if (buf != 0)
 		{
 			detach_threads(&(*philo)[i].thread, i);
