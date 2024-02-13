@@ -49,13 +49,12 @@ typedef struct s_philo
 
 int		ft_atoi(const char *nptr);
 int		put_arguments(t_args *arg, char **input);
-int		generate_threads(t_philo **philo, t_args args);
 int		generate_chopstick(pthread_mutex_t *chopstick,
 							t_philo **philo, t_args arg);
 int		generate_philo(t_philo **philo, t_args *args);
 int		dead_checker(t_philo *first_philo);
 int		eating_checker(t_philo *first_philo);
-int		generate_threads(t_philo **philo, t_args args);
+int		generate_threads(t_philo **philo, t_args *args);
 void	*philosopher(void *philo);
 void	free_philo(t_philo **philo, t_args args);
 void	free_philo_with_c(t_philo **philo, t_args args);

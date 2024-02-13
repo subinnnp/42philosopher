@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 23:34:14 by siun              #+#    #+#             */
-/*   Updated: 2024/02/12 17:09:29 by subpark          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:00:59 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,21 @@ int generate_chopstick(pthread_mutex_t *chopstick, t_philo **philo, t_args args)
 	return (1);
 }
 
-int	generate_threads(t_philo **philo, t_args args)
+int	generate_threads(t_philo **philo, t_args *args)
 {
 	int	i;
 	int	buf;
 
 	i = 0;
-	while(i < args.num_of_philo)
+	while(i < (*args).num_of_philo)
 	{
 		(*philo)[i].index = i;
 		buf = pthread_create(&(*philo)[i].thread, 0, philosopher, &(*philo)[i]);
+		args->start_time = get_current_time();
 		if (buf != 0)
 		{
 			detach_threads(&(*philo)[i].thread, i);
-			free_philo(philo, args);
+			free_philo(philo, (*args));
 			return (0);
 		}
 		i ++;

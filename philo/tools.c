@@ -6,7 +6,7 @@
 /*   By: subpark <subpark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 22:57:10 by siun              #+#    #+#             */
-/*   Updated: 2024/02/13 14:58:27 by subpark          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:01:28 by subpark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		put_arguments(t_args *args, char **input)
 		args->eating_goal = ft_atoi(input[5]);
 	else
 		args->eating_goal = -1;
-	args->start_time = get_current_time();
+	//args->start_time = get_current_time();
 	if (pthread_mutex_init(&(args->meal), NULL))
 		return (0);
 	return (1);
